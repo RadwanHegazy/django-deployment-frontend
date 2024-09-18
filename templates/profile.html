@@ -15,43 +15,44 @@
     </div>
 
     <div class="down">
-        <div class="form">
-            <button>انشاء</button>
-            <input type="text" placeholder="اسم ال image">
-        </div>
+        <form class="form" method="POST">
+            {% csrf_token %}
+            <button type="submit">انشاء</button>
+            <input type="text" placeholder="اسم ال image" name="image">
+        </form>
+
+
+        {% for service in services %}
+            <div class="image">
+                <div>
+                    <small>اسم ال image</small>
+                    <p>{{service.image}}</p>
+                </div>
+
+                {% if service.is_online %}
+                    <div>
+                        <small>الحالة</small>
+                        <p class="state online">اونلاين</p>
+                    </div>
+                    <div>
+                        <small>الرابط</small>
+                        <a href="http://localhost:{{service.port}}" target="_blank">http://localhost:{{service.port}}</a>
+                    </div>
+                {% else %}
+                    <div>
+                        <small>الحالة</small>
+                        <p class="state">جاري الانشاء</p>
+                    </div>
+                    <div>
+                        <small>الرابط</small>
+                        <p>--</p>
+                    </div>
+                {% endif %}
+                
+            </div>
+        {% endfor %}
     
-        <div class="image">
-            <div>
-                <small>اسم ال image</small>
-                <p>radwangaberhijazi/django_test</p>
-            </div>
-            <div>
-                <small>الحالة</small>
-                <p class="state">جاري الانشاء</p>
-            </div>
-            <div>
-                <small>الرابط</small>
-                <a href="#" target="_blank">http://localhost:23323</a>
-            </div>
-            
-        </div>
 
-
-        <div class="image">
-            <div>
-                <small>اسم ال image</small>
-                <p>radwangaberhijazi/django_test</p>
-            </div>
-            <div>
-                <small>الحالة</small>
-                <p class="state online">اونلاين</p>
-            </div>
-            <div>
-                <small>الرابط</small>
-                <a href="#" target="_blank">http://localhost:23323</a>
-            </div>
-            
-        </div>
 
         
 
