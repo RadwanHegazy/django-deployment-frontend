@@ -11,7 +11,24 @@ class ProfileView(TemplateView) :
 
     @login_required
     def get(self, request, **kwargs) : 
-        return render(request, self.template_name)
+        headers = kwargs['headers']
+
+        action = Action(url=MAIN_URL + '/service/get/', headers=headers)
+        action.get()
+        context = {
+            'services' : action.json_data()
+        }
+        return render(request, self.template_name, context)
+    
+    @login_required
+    def post (self, request, **kwargs) :
+        headers = kwargs['headers']
+        data = dict(request.POST)
+
+        action = Action(url=MAIN_URL + '/service/create/', headers=headers, data=data)
+        action.post()
+        
+        return redirect('profile')
 
 class LoginView (TemplateView): 
     template_name = 'login.html'
