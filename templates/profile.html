@@ -1,0 +1,62 @@
+{% load static  %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الصفحة الشخصية</title>
+    <link rel="stylesheet" href="{% static 'style/profile.css' %}">
+</head>
+<body>
+    
+    <div class="up">
+        <h1>{{c_user.full_name}}</h1>
+        <a href="{% url 'logout' %}"> تسجيل الخروح ؟</a>
+    </div>
+
+    <div class="down">
+        <div class="form">
+            <button>انشاء</button>
+            <input type="text" placeholder="اسم ال image">
+        </div>
+    
+        <div class="image">
+            <div>
+                <small>اسم ال image</small>
+                <p>radwangaberhijazi/django_test</p>
+            </div>
+            <div>
+                <small>الحالة</small>
+                <p class="state">جاري الانشاء</p>
+            </div>
+            <div>
+                <small>الرابط</small>
+                <a href="#" target="_blank">http://localhost:23323</a>
+            </div>
+            
+        </div>
+
+
+        <div class="image">
+            <div>
+                <small>اسم ال image</small>
+                <p>radwangaberhijazi/django_test</p>
+            </div>
+            <div>
+                <small>الحالة</small>
+                <p class="state online">اونلاين</p>
+            </div>
+            <div>
+                <small>الرابط</small>
+                <a href="#" target="_blank">http://localhost:23323</a>
+            </div>
+            
+        </div>
+
+        
+
+    </div>
+
+    
+</body>
+</html>
